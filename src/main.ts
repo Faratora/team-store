@@ -1,1 +1,1 @@
-console.log('team-store')
+console.log('team-store');
