@@ -141,7 +141,11 @@ const team: TeamMember[] = [
   },
 ];
 
-
+const stats = [
+  { value: '02', label: 'разработчика' },
+  { value: '01', label: 'репозиторий' },
+  { value: '100%', label: 'практика' },
+];
 
 function renderMarquee(): string {
   const group = marqueeWords
@@ -208,6 +212,28 @@ function renderTeam(): string {
         довести учебный магазин до рабочего деплоя.</p>
       </div>
       <div class="team-grid">${cards}</div>
+
+      <div class="manifesto">
+        ${flowerSvg('manifesto__flower')}
+        <div class="manifesto__text">
+          <p class="eyebrow eyebrow--light">Наш подход</p>
+          <h3 class="manifesto__title">Учебный проект — тоже продукт</h3>
+          <p>Мы не делим работу на «моё» и «твоё»: каждый понимает, как устроен
+          весь магазин — от фильтров до промокода и сохранения корзины.</p>
+        </div>
+        <div class="stats">
+          ${stats
+            .map(
+              (stat) => `
+                <div class="stat">
+                  <span class="stat__value">${stat.value}</span>
+                  <span class="stat__label">${stat.label}</span>
+                </div>
+              `,
+            )
+            .join('')}
+        </div>
+      </div>
     </section>
   `;
 }
