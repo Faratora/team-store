@@ -3,11 +3,11 @@ import './styles/main.css';
 import rssLogo from './assets/rss-logo.svg';
 import { flowerSvg } from './utils/svg';
 import { navLinks, Page } from './data/navigation';
-import { marqueeWords } from './data/marquee';
 import { team } from './data/team';
 import { stats } from './data/stats';
 import { renderHeader } from './ui/header';
 import { renderHero } from './ui/hero';
+import { renderMarquee } from './ui/marquee';
 
 const appRoot = document.querySelector<HTMLDivElement>('#app');
 
@@ -18,24 +18,6 @@ if (!appRoot) {
 const root: HTMLDivElement = appRoot;
 
 let currentPage: Page = 'about';
-
-function renderMarquee(): string {
-  const group = marqueeWords
-    .map(
-      (word) =>
-        `<span class="marquee__item">${word}</span><span class="marquee__sep">✦</span>`,
-    )
-    .join('');
-
-  return `
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <div class="marquee__group">${group}</div>
-        <div class="marquee__group">${group}</div>
-      </div>
-    </div>
-  `;
-}
 
 function renderTeam(): string {
   const cards = team
