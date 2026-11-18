@@ -1,5 +1,8 @@
 import './styles/main.css';
 
+import rssLogo from './assets/rss-logo.svg';
+
+
 type Page = 'about' | 'catalog' | 'cart';
 
 const navLinks: Array<{ page: Page; label: string }> = [
@@ -238,7 +241,19 @@ function renderTeam(): string {
   `;
 }
 
-
+function renderFooter(): string {
+  return `
+    <footer class="site-footer">
+      <span>© 2026 Team Store</span>
+      <span class="site-footer__dots">✦ ✦ ✦</span>
+      <a class="site-footer__rss" href="https://rs.school/" target="_blank"
+        rel="noopener noreferrer">
+        <img src="${rssLogo}" alt="" width="26" height="26" />
+        <span>RS School</span>
+      </a>
+    </footer>
+  `;
+}
 
 function render(): void {
   root.innerHTML = `
@@ -246,6 +261,7 @@ function render(): void {
     <div class="shell">
       ${renderHeader()}
       <main class="page">${renderHero()}${renderMarquee()}${renderTeam()}</main>
+      ${renderFooter()}
     </div>
   `;
 }
