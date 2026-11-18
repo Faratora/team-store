@@ -476,3 +476,44 @@ svg {
   }
 }
 
+/* Бегущая строка */
+
+.marquee {
+  padding: 10px 0;
+  border-bottom: var(--line);
+  background: var(--cream-soft);
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding-right: 26px;
+}
+
+.marquee__item {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.marquee__sep {
+  color: var(--pink-deep);
+  font-size: 0.8rem;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+

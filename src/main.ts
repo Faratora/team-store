@@ -100,12 +100,41 @@ function renderHero(): string {
   `;
 }
 
+// Бегущая строка
+const marqueeWords = [
+  'код',
+  'дизайн',
+  'каталог',
+  'корзина',
+  'промокод',
+  'localstorage',
+];
+
+function renderMarquee(): string {
+  const group = marqueeWords
+    .map(
+      (word) =>
+        `<span class="marquee__item">${word}</span><span class="marquee__sep">✦</span>`,
+    )
+    .join('');
+
+  return `
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">${group}</div>
+        <div class="marquee__group">${group}</div>
+      </div>
+    </div>
+  `;
+}
+
+
 function render(): void {
   root.innerHTML = `
     <div class="topbar" aria-hidden="true"><div class="topbar__dots"></div></div>
     <div class="shell">
       ${renderHeader()}
-      <main class="page">${renderHero()}</main>
+      <main class="page">${renderHero()}${renderMarquee()}</main>
     </div>
   `;
 }
