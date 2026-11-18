@@ -9,7 +9,12 @@ if (!appRoot) {
 const root: HTMLDivElement = appRoot;
 
 function render(): void {
-  root.innerHTML = `<main class="page"></main>`;
+  root.innerHTML = `
+    <div class="topbar" aria-hidden="true"><div class="topbar__dots"></div></div>
+    <div class="shell">
+      <main class="page"></main>
+    </div>
+  `;
 }
 
 render();
