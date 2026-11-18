@@ -1,7 +1,7 @@
 import './styles/main.css';
 
 import rssLogo from './assets/rss-logo.svg';
-
+import { flowerSvg, cartIcon } from './utils/svg';
 
 type Page = 'about' | 'catalog' | 'cart';
 
@@ -11,14 +11,6 @@ const navLinks: Array<{ page: Page; label: string }> = [
   { page: 'cart', label: 'Корзина' },
 ];
 
-const cartIcon = `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-    <path d="M5.5 8h13l-1.1 12.5h-10.8L5.5 8Z" />
-    <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-  </svg>
-`;
-
 const appRoot = document.querySelector<HTMLDivElement>('#app');
 
 if (!appRoot) {
@@ -27,21 +19,7 @@ if (!appRoot) {
 
 const root: HTMLDivElement = appRoot;
 
-let currentPage: Page = 'about';
-
-function flowerSvg(className: string): string {
-  const petals = Array.from(
-    { length: 10 },
-    (_, index) =>
-      `<ellipse cx="60" cy="27" rx="11" ry="27" transform="rotate(${index * 36} 60 60)" />`,
-  ).join('');
-
-  return `
-    <svg class="${className}" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-      <g fill="currentColor">${petals}<circle cx="60" cy="60" r="13" /></g>
-    </svg>
-  `;
-}
+const currentPage: Page = 'about';
 
 function renderHeader(): string {
   const links = navLinks
@@ -130,7 +108,8 @@ const team: TeamMember[] = [
     github: 'KateKurakina',
     githubUrl: 'https://github.com/KateKurakina',
     role: 'Екатерина Куракина',
-    contribution: 'Настройка проекта, каталог, фильтры и сортировка товаров, корзина, промокод и сохранение покупок в localStorage.',
+    contribution:
+      'Настройка проекта, каталог, фильтры и сортировка товаров, корзина, промокод и сохранение покупок в localStorage.',
     art: 'pink',
   },
   {
