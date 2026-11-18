@@ -6,6 +6,7 @@ import { renderHero } from './ui/hero';
 import { renderMarquee } from './ui/marquee';
 import { renderTeam } from './ui/team';
 import { renderCatalog } from './ui/catalog';
+import { renderCart } from './ui/cart';
 import { renderFooter } from './ui/footer';
 
 const appRoot = document.querySelector<HTMLDivElement>('#app');
@@ -54,6 +55,10 @@ function pageFromHash(): Page {
 function renderPageContent(page: Page): string {
   if (page === 'catalog') {
     return renderCatalog();
+  }
+
+  if (page === 'cart') {
+    return renderCart();
   }
 
   return `${renderHero('about')}${renderMarquee()}${renderTeam()}`;
