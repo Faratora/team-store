@@ -63,12 +63,30 @@ function renderHeader(): string {
     </header>
   `;
 }
+
+function renderHero(): string {
+  return `
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">О нас</p>
+        <h1 class="hero__title">Делаем<br />магазин<br />вместе</h1>
+        <p class="hero__lead">Team Store — учебный проект команды из двух разработчиков.
+        Каталог с фильтрами, корзина, промокод и аккуратный интерфейс: собираем
+        магазин так, будто он настоящий.</p>
+        <div class="hero__actions">
+          <a class="btn btn--dark" href="#/catalog" data-page="catalog">Смотреть каталог</a>
+          </div>
+      </div>
+    </section>
+  `;
+}
+
 function render(): void {
   root.innerHTML = `
     <div class="topbar" aria-hidden="true"><div class="topbar__dots"></div></div>
     <div class="shell">
       ${renderHeader()}
-      <main class="page"></main>
+      <main class="page">${renderHero()}</main>
     </div>
   `;
 }
