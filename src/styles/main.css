@@ -160,6 +160,8 @@ svg {
   transform: translateX(-50%);
 }
 
+/* Кнопка корзины */
+
 .cart-link {
   display: grid;
   place-items: center;
@@ -189,4 +191,39 @@ svg {
 .cart-link svg {
   width: 20px;
   height: 20px;
+}
+
+/* Кнопки */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border: var(--line);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.btn--dark {
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: 0 5px 0 rgba(22, 21, 15, 0.18);
+}
+
+.btn--dark:hover {
+  background: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 rgba(22, 21, 15, 0.2);
 }
