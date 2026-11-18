@@ -1,11 +1,11 @@
 import './styles/main.css';
 
-import rssLogo from './assets/rss-logo.svg';
 import { navLinks, Page } from './data/navigation';
 import { renderHeader } from './ui/header';
 import { renderHero } from './ui/hero';
 import { renderMarquee } from './ui/marquee';
 import { renderTeam } from './ui/team';
+import { renderFooter } from './ui/footer';
 
 const appRoot = document.querySelector<HTMLDivElement>('#app');
 
@@ -16,20 +16,6 @@ if (!appRoot) {
 const root: HTMLDivElement = appRoot;
 
 let currentPage: Page = 'about';
-
-function renderFooter(): string {
-  return `
-    <footer class="site-footer">
-      <span>© 2026 Team Store</span>
-      <span class="site-footer__dots">✦ ✦ ✦</span>
-      <a class="site-footer__rss" href="https://rs.school/" target="_blank"
-        rel="noopener noreferrer">
-        <img src="${rssLogo}" alt="" width="26" height="26" />
-        <span>RS School</span>
-      </a>
-    </footer>
-  `;
-}
 
 function attachListeners(): void {
   document
