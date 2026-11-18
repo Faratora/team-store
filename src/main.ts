@@ -1,11 +1,12 @@
 import './styles/main.css';
 
 import rssLogo from './assets/rss-logo.svg';
-import { flowerSvg, cartIcon } from './utils/svg';
+import { flowerSvg } from './utils/svg';
 import { navLinks, Page } from './data/navigation';
 import { marqueeWords } from './data/marquee';
 import { team } from './data/team';
 import { stats } from './data/stats';
+import { renderHeader } from './ui/header';
 
 const appRoot = document.querySelector<HTMLDivElement>('#app');
 
@@ -15,31 +16,7 @@ if (!appRoot) {
 
 const root: HTMLDivElement = appRoot;
 
-const currentPage: Page = 'about';
-
-function renderHeader(): string {
-  const links = navLinks
-    .map((link) => {
-      const active = link.page === currentPage;
-      return `<a href="#/${link.page}" data-page="${link.page}" class="${active ? 'active' : ''}"
-        ${active ? 'aria-current="page"' : ''}>${link.label}</a>`;
-    })
-    .join('');
-
-  const cartActive = currentPage === 'cart';
-
-  return `
-    <header class="site-header">
-      <a class="logo" href="#/about" data-page="about">
-        ${flowerSvg('logo__flower')}
-        <span>team store</span>
-      </a>
-      <nav class="site-nav" aria-label="Основная навигация">${links}</nav>
-      <a class="cart-link ${cartActive ? 'is-active' : ''}" href="#/cart" data-page="cart"
-        aria-label="Корзина" ${cartActive ? 'aria-current="page"' : ''}>${cartIcon}</a>
-    </header>
-  `;
-}
+let currentPage: Page = 'about';
 
 function renderHero(): string {
   return `
@@ -182,15 +159,50 @@ function renderFooter(): string {
   `;
 }
 
+function attachListeners(): void {
+  document
+    .querySelectorAll<HTMLAnchorElement>('a[data-page]')
+    .forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        navigateTo(link.dataset.page);
+      });
+    });
+}
+
+function navigateTo(page: string | undefined): void {
+  const next = navLinks.find((link) => link.page === page);
+
+  if (!next || next.page === currentPage) {
+    return;
+  }
+
+  window.location.hash = `/${next.page}`;
+}
+
+window.addEventListener('hashchange', () => {
+  currentPage = pageFromHash();
+  render();
+  window.scrollTo({ top: 0 });
+});
+
+function pageFromHash(): Page {
+  const page = window.location.hash.replace(/^#\/?/, '');
+  const match = navLinks.find((link) => link.page === page);
+  return match ? match.page : 'about';
+}
+
 function render(): void {
   root.innerHTML = `
     <div class="topbar" aria-hidden="true"><div class="topbar__dots"></div></div>
     <div class="shell">
-      ${renderHeader()}
+      ${renderHeader(currentPage)}
       <main class="page">${renderHero()}${renderMarquee()}${renderTeam()}</main>
       ${renderFooter()}
     </div>
   `;
+
+  attachListeners();
 }
 
 render();
