@@ -2,14 +2,10 @@ import './styles/main.css';
 
 import rssLogo from './assets/rss-logo.svg';
 import { flowerSvg, cartIcon } from './utils/svg';
-
-type Page = 'about' | 'catalog' | 'cart';
-
-const navLinks: Array<{ page: Page; label: string }> = [
-  { page: 'about', label: 'О нас' },
-  { page: 'catalog', label: 'Каталог' },
-  { page: 'cart', label: 'Корзина' },
-];
+import { navLinks, Page } from './data/navigation';
+import { marqueeWords } from './data/marquee';
+import { team } from './data/team';
+import { stats } from './data/stats';
 
 const appRoot = document.querySelector<HTMLDivElement>('#app');
 
@@ -78,56 +74,8 @@ function renderHero(): string {
         <p class="visual-note">2 разработчика<br />1 магазин</p>
       </div>
     </section>
-  `;
+`;
 }
-
-// Бегущая строка
-const marqueeWords = [
-  'код',
-  'дизайн',
-  'каталог',
-  'корзина',
-  'промокод',
-  'localstorage',
-];
-
-type TeamMember = {
-  num: string;
-  title: string;
-  github: string;
-  githubUrl?: string;
-  role: string;
-  contribution: string;
-  art: string;
-};
-
-const team: TeamMember[] = [
-  {
-    num: '01',
-    title: 'Участник 1',
-    github: 'KateKurakina',
-    githubUrl: 'https://github.com/KateKurakina',
-    role: 'Екатерина Куракина',
-    contribution:
-      'Настройка проекта, каталог, фильтры и сортировка товаров, корзина, промокод и сохранение покупок в localStorage.',
-    art: 'pink',
-  },
-  {
-    num: '02',
-    title: 'Участник 2',
-    github: 'Faratora',
-    githubUrl: 'https://github.com/Faratora',
-    role: 'Светлана Савина',
-    contribution: 'Настройка проекта, страница "О нас", ',
-    art: 'olive',
-  },
-];
-
-const stats = [
-  { value: '02', label: 'разработчика' },
-  { value: '01', label: 'репозиторий' },
-  { value: '100%', label: 'практика' },
-];
 
 function renderMarquee(): string {
   const group = marqueeWords
