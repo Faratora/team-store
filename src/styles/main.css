@@ -159,3 +159,34 @@ svg {
   background: var(--ink);
   transform: translateX(-50%);
 }
+
+.cart-link {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border: var(--line);
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.cart-link:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+
+.cart-link.is-active {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.cart-link svg {
+  width: 20px;
+  height: 20px;
+}
