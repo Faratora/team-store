@@ -16,7 +16,7 @@ export function renderTeam(): string {
           <p class="team-card__about">${member.contribution}</p>
           ${
             member.githubUrl
-              ? `<a class="team-card__github team-card__github--link"
+              ? `<a class="team-card__github"
                    href="${member.githubUrl}" target="_blank" rel="noopener noreferrer"
                    aria-label="GitHub: ${member.github} (откроется в новой вкладке)">
                    <span>GitHub</span>

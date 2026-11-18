@@ -1,16 +1,19 @@
 import { flowerSvg } from '../utils/svg';
+import { heroContent } from '../data/hero';
+import type { Page } from '../data/navigation';
 
-export function renderHero(): string {
+export function renderHero(page: Page = 'about'): string {
+  const content = heroContent[page];
+
   return `
     <section class="hero">
       <div class="hero__copy">
-        <p class="eyebrow">О нас</p>
-        <h1 class="hero__title">Делаем<br />магазин<br />вместе</h1>
-        <p class="hero__lead">Team Store — учебный проект команды из двух разработчиков.
-        Каталог с фильтрами, корзина, промокод и аккуратный интерфейс: собираем
-        магазин так, будто он настоящий.</p>
+        <p class="eyebrow">${content.eyebrow}</p>
+        <h1 class="hero__title">${content.title}</h1>
+        <p class="hero__lead">${content.lead}</p>
         <div class="hero__actions">
-          <a class="btn btn--dark" href="#/catalog" data-page="catalog">Смотреть каталог</a>
+          <a class="btn btn--dark" href="#/${content.action.page}"
+            data-page="${content.action.page}">${content.action.label}</a>
         </div>
       </div>
       <div class="hero__visual">
@@ -30,7 +33,7 @@ export function renderHero(): string {
           <span class="pack__word">ship</span>
           <span class="pack__meta">est. 2026</span>
         </div>
-        <p class="visual-note">2 разработчика<br />1 магазин</p>
+        <p class="visual-note">${content.note}</p>
       </div>
     </section>
   `;
