@@ -1,0 +1,31 @@
+export type TeamMember = {
+  num: string;
+  title: string;
+  github: string;
+  githubUrl?: string;
+  role: string;
+  contribution: string;
+  art: string;
+};
+
+export const team: TeamMember[] = [
+  {
+    num: '01',
+    title: 'Участник 1',
+    github: 'KateKurakina',
+    githubUrl: 'https://github.com/KateKurakina',
+    role: 'Екатерина Куракина',
+    contribution:
+      'Настройка проекта, каталог, фильтры и сортировка товаров, корзина, промокод и сохранение покупок в localStorage.',
+    art: 'pink',
+  },
+  {
+    num: '02',
+    title: 'Участник 2',
+    github: 'Faratora',
+    githubUrl: 'https://github.com/Faratora',
+    role: 'Светлана Савина',
+    contribution: 'Настройка проекта, страница "О нас", ',
+    art: 'olive',
+  },
+];
