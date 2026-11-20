@@ -105,4 +105,11 @@ export const products: Product[] = [
     price: 2500,
     image: '/team-store/src/assets/img/products/podushka-kovrovaya-vyshivk.jpg',
   },
+  {
+    id: '15',
+    name: 'Свеча',
+    category: 'Декор',
+    price: 1800,
+    image: '/team-store/src/assets/img/products/candle.jpg',
+  },
 ];
