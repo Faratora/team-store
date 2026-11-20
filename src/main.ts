@@ -8,6 +8,7 @@ import { renderTeam } from './ui/team';
 import { renderCatalog } from './ui/catalog';
 import { renderCart } from './ui/cart';
 import { renderFooter } from './ui/footer';
+import { renderProducts } from './ui/products';
 
 const appRoot = document.querySelector<HTMLDivElement>('#app');
 
@@ -75,6 +76,16 @@ function render(): void {
       ${renderFooter()}
     </div>
   `;
+
+  if (currentPage === 'catalog') {
+    const productsPlaceholder = root.querySelector<HTMLDivElement>(
+      '[data-products-placeholder]',
+    );
+    
+    if (productsPlaceholder) {
+      productsPlaceholder.replaceWith(renderProducts());
+    }
+  }
 
   attachListeners();
 }
