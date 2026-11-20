@@ -677,7 +677,9 @@ svg {
   font-size: 1.2rem;
   font-weight: 800;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
 .product-card__quantity-button:hover {

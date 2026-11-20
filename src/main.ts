@@ -73,11 +73,12 @@ function updateCartLinkCount(): void {
     return;
   }
 
-  const totalQuantity = getCartFromStorage().items.reduce((total, item) => total + item.quantity, 0);
-  
-  let count = cartLink.querySelector<HTMLSpanElement>(
-    '.cart-link__count',
+  const totalQuantity = getCartFromStorage().items.reduce(
+    (total, item) => total + item.quantity,
+    0,
   );
+
+  let count = cartLink.querySelector<HTMLSpanElement>('.cart-link__count');
 
   if (!count) {
     count = document.createElement('span');
@@ -107,7 +108,7 @@ function render(): void {
     const productsPlaceholder = root.querySelector<HTMLDivElement>(
       '[data-products-placeholder]',
     );
-    
+
     if (productsPlaceholder) {
       productsPlaceholder.replaceWith(renderProducts());
     }

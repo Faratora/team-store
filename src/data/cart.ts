@@ -45,7 +45,9 @@ export function notifyCartUpdated(): void {
 }
 
 export function getProductQuantity(productId: string): number {
-  const item = getCartFromStorage().items.find((item) => item.productId === productId);
+  const item = getCartFromStorage().items.find(
+    (item) => item.productId === productId,
+  );
 
   return item ? item.quantity : 0;
 }
@@ -60,7 +62,7 @@ export function addToCart(productId: string): void {
     cart.items.push({
       productId,
       quantity: 1,
-    })
+    });
   }
 
   saveCartToStorage(cart);
@@ -71,7 +73,7 @@ export function updateCartQuantity(productId: string, quantity: number): void {
   const cart = getCartFromStorage();
 
   if (quantity <= 0) {
-    cart.items = cart.items.filter((item) => item.productId !== productId)
+    cart.items = cart.items.filter((item) => item.productId !== productId);
   } else {
     const item = cart.items.find((item) => item.productId === productId);
 

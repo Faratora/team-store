@@ -1,5 +1,10 @@
 import type { Product } from '../data/products';
-import { formatPrice, getProductQuantity, addToCart, updateCartQuantity, } from '../data/cart';
+import {
+  formatPrice,
+  getProductQuantity,
+  addToCart,
+  updateCartQuantity,
+} from '../data/cart';
 
 export function createProductCard(product: Product): HTMLElement {
   const card = document.createElement('article');
@@ -39,7 +44,7 @@ export function createProductCard(product: Product): HTMLElement {
       addButton.className = 'product-card__button';
       addButton.type = 'button';
       addButton.textContent = 'В корзину';
-      
+
       addButton.addEventListener('click', () => {
         addToCart(product.id);
         renderControls();
@@ -79,7 +84,6 @@ export function createProductCard(product: Product): HTMLElement {
   }
 
   renderControls();
-
 
   cardInfo.append(cardCategory, cardName, cardPrice, cardControls);
   card.append(cardImage, cardInfo);
