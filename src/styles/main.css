@@ -603,6 +603,14 @@ svg {
   font-weight: 800;
 }
 
+.product-card__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
 .product-card__button {
   width: 100%;
   margin-top: 8px;
@@ -629,6 +637,34 @@ svg {
 
 .product-card__button:active {
   transform: translateY(0);
+}
+
+.product-card__quantity-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: var(--line);
+  border-radius: 50%;
+  background: var(--pink);
+  color: var(--ink);
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.product-card__quantity-button:hover {
+  background: var(--olive);
+  transform: translateY(-2px);
+}
+
+.product-card__quantity {
+  min-width: 24px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
 }
 
 @media (max-width: 1000px) {
