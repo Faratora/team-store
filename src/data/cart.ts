@@ -40,6 +40,10 @@ export function saveCartToStorage(cart: CartState): void {
   }
 }
 
+export function notifyCartUpdated(): void {
+  window.dispatchEvent(new Event('cart-updated'));
+}
+
 export function getProductQuantity(productId: string): number {
   const item = getCartFromStorage().items.find((item) => item.productId === productId);
 
@@ -60,6 +64,7 @@ export function addToCart(productId: string): void {
   }
 
   saveCartToStorage(cart);
+  notifyCartUpdated();
 }
 
 export function updateCartQuantity(productId: string, quantity: number): void {
@@ -81,6 +86,7 @@ export function updateCartQuantity(productId: string, quantity: number): void {
   }
 
   saveCartToStorage(cart);
+  notifyCartUpdated();
 }
 
 export function calculateCartTotals(

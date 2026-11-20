@@ -27,7 +27,7 @@ export function createProductCard(product: Product): HTMLElement {
   cardPrice.textContent = formatPrice(product.price);
 
   const cardControls = document.createElement('div');
-  cardControls.className = 'product-card__controls'
+  cardControls.className = 'product-card__controls';
 
   function renderControls(): void {
     cardControls.replaceChildren();
