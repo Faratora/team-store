@@ -40,6 +40,57 @@ export function saveCartToStorage(cart: CartState): void {
   }
 }
 
+export function notifyCartUpdated(): void {
+  window.dispatchEvent(new Event('cart-updated'));
+}
+
+export function getProductQuantity(productId: string): number {
+  const item = getCartFromStorage().items.find(
+    (item) => item.productId === productId,
+  );
+
+  return item ? item.quantity : 0;
+}
+
+export function addToCart(productId: string): void {
+  const cart = getCartFromStorage();
+  const item = cart.items.find((item) => item.productId === productId);
+
+  if (item) {
+    item.quantity += 1;
+  } else {
+    cart.items.push({
+      productId,
+      quantity: 1,
+    });
+  }
+
+  saveCartToStorage(cart);
+  notifyCartUpdated();
+}
+
+export function updateCartQuantity(productId: string, quantity: number): void {
+  const cart = getCartFromStorage();
+
+  if (quantity <= 0) {
+    cart.items = cart.items.filter((item) => item.productId !== productId);
+  } else {
+    const item = cart.items.find((item) => item.productId === productId);
+
+    if (item) {
+      item.quantity = quantity;
+    } else {
+      cart.items.push({
+        productId,
+        quantity,
+      });
+    }
+  }
+
+  saveCartToStorage(cart);
+  notifyCartUpdated();
+}
+
 export function calculateCartTotals(
   cart: CartState,
   products: Product[],
